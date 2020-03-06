@@ -28,11 +28,11 @@ module.exports = {
       }
     ]
   },
-//   plugins: [
-//     new HtmlWebpackPlugin({
-//       template: "./src/index.html"
-//     })
-//   ],
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./public/index.html"
+    })
+  ],
   output: {
     path: path.resolve(__dirname, "public"),
     filename: "index_bundle.js"

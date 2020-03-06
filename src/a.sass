@@ -1,2 +1,52 @@
-#root
-    color: red
+html[data-theme='light']
+    --bg: white;
+    --bg-input: #FAFAFA;
+    --color-text: #212121;
+    --color-placeholder: #A8A8A8;
+
+html[data-theme='dark']
+    --bg: #333333;
+    --bg-input: #292929;
+    --color-text: white;
+    --color-placeholder: #656565;
+
+body
+    background-color: var(--bg)
+.container
+    margin: 80px 350px
+
+.header
+    display: flex
+    justify-content: space-between
+    h2
+        color: var(--color-text)
+.content
+    h4
+        color: var(--color-text)
+.search-wrapper
+    display: flex
+    flex-direction: column
+    h4
+        color: var(--color-text)
+    input
+        width: 293px
+        height: 51px
+        background-color: var(--bg-input)
+        margin-top: 20px
+        border: none
+        color: var(--color-text)
+        padding: 0 20px
+        border-radius: 8px
+        &:focus
+            outline: none
+    input::-webkit-input-placeholder
+        color: var(--color-placeholder) !important
+    label
+        color: var(--color-text)
+
+html.transition,
+html.transition *,
+html.transition *:before,
+html.transition *:after 
+  transition: all 750ms !important
+  transition-delay: 0 !important
