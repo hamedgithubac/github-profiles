@@ -1,0 +1,6 @@
+interface IRepoItem{
+
+}
+interface IGitHubUser{
+
+}

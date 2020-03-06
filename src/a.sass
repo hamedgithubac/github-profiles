@@ -1,23 +1,50 @@
 html[data-theme='light']
     --bg: white;
+    --bg-search: #333333;
     --bg-input: #FAFAFA;
     --color-text: #212121;
-    --color-placeholder: #A8A8A8;
+    --color-muted: #A8A8A8;
+    --repo-item-bg: #FAFAFA;
+    .theme-toggle-icon
+        background: url("./assets/moon.svg") no-repeat
+        cursor: pointer
+    .search-icon-active
+        background-color: var(--bg-search)
+        g
+            fill: var(--bg-input)
+    .search-icon-inactive
+        background-color: transparent
+        g
+            color: var(--color-muted)
 
 html[data-theme='dark']
     --bg: #333333;
+    --bg-search: white;
     --bg-input: #292929;
     --color-text: white;
-    --color-placeholder: #656565;
-
+    --color-muted: #656565;
+    --repo-item-bg: #292929;
+    .theme-toggle-icon
+        background: url("./assets/sun.svg") no-repeat
+        cursor: pointer
+    .search-icon-active
+        background-color: var(--bg-search)
+        g
+            fill: var(--bg-input)
+    .search-icon-inactive
+        background-color: transparent
+        g
+            color: var(--color-muted)
 body
     background-color: var(--bg)
+    font-family: 'M PLUS Rounded 1c', sans-serif
+
 .container
     margin: 80px 350px
-
 .header
     display: flex
     justify-content: space-between
+    align-items: center;
     h2
         color: var(--color-text)
 .content
@@ -26,6 +53,7 @@ body
 .search-wrapper
     display: flex
     flex-direction: column
+    position: relative
     h4
         color: var(--color-text)
     input
@@ -40,13 +68,100 @@ body
         &:focus
             outline: none
     input::-webkit-input-placeholder
-        color: var(--color-placeholder) !important
+        color: var(--color-muted) !important
     label
         color: var(--color-text)
+.search-icon
+    width: 51px
+    height: 51px
+    position: absolute;
+    left: 281px;
+    top: 43px;
+    border-radius: 8px;
+    background-size: 18px
+    background-repeat: no-repeat
+    background-position: 16px
+    display: flex
+    justify-content: center
+    align-items: center
+    transition: all 400ms ease
+    cursor: pointer
+    svg
+        width: 18px
+        height: 18px
+// GitHubUserInfo Component
+.result-container
+    display: flex
+    margin-top: 60px
+    align-items: flex-start;
+.left
+    flex: .23
+    font-size: 14px
+    .bottom-info
+        div
+            margin: 15px
+        .user-name
+            font-size: 14px
+            color: var(--color-text)
+    .key
+        color: var(--color-muted)
+    .value
+        color: var(--color-text)
+    
+.right
+    display: flex;
+    flex-wrap: wrap
+    flex: .77
+    .repo-item
+        background-color: var(--repo-item-bg)
+        width: 396px
+        height: 110px
+        border-radius: 8px
+        padding: 7px 20px
+        margin: 8px
+        font-size: 12px
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        .repo-texts
+            .repo-titles
+                display: flex
+            .repo-title
+                color: #007FFF
+                cursor: pointer
+                font-size: 14px
+            .repo-fork-from-wrapper
+                margin-left: 30px
+                .repo-fork-from-label
+                    color: var(--color-muted)
+            .repo-desc
+                color: var(--color-text)
+                margin: 10px 0
+                font-size: 12px
 
+        .repo-info
+            display: flex
+            .icon
+                width: 18px
+                height: 18px
+                display: inline-block
+                g
+                    fill: var(--color-muted) !important
+            .repo-badges
+                color: var(--color-text)
+                margin-right: 25px;
+                margin-left: 10px;
+
+.link
+    color: #007FFF !important
+    cursor: pointer
+.toggle-icon
+    width: 24px
+    height: 24px
+    display: inline-block
 html.transition,
 html.transition *,
 html.transition *:before,
 html.transition *:after 
-  transition: all 750ms !important
-  transition-delay: 0 !important
+    transition: all 200ms !important
+    transition-delay: 0 !important
