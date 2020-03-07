@@ -1,11 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, FunctionComponent } from 'react';
 import GitHubUserInfo from './components/GithubUserInfo/index';
-import { SearchIcon, Preloader } from './components/icons';
+import { SearchIcon } from './components/icons';
+import { connect } from 'react-redux';
+import { getGitHubUserInfo } from './store/actions';
 import './a.sass';
 
 type Theme = 'dark' | 'light';
-
-const App = () => {
+interface IAppProps {
+  onSearchBtnClicked: (username: string) => void;
+  state: {
+    userInfo: any;
+    error: string;
+    loading: boolean;
+  };
+}
+const App: FunctionComponent<IAppProps> = ({ onSearchBtnClicked, state }) => {
   const [theme, setTheme] = useState<Theme>('light');
   const [username, setUsername] = useState<string>('');
   useEffect(() => {
@@ -38,7 +47,12 @@ const App = () => {
     }, 1000);
   };
   const handleUsernameChange = (e: any) => {
-    setUsername(e.target.value)
+    setUsername(e.target.value);
+  };
+  const handleKeyDown = (e: any) => {
+    if (e.keyCode === 13) {
+      onSearchBtnClicked(username);
+    }
   };
   return (
     <div className="container">
@@ -54,14 +68,40 @@ const App = () => {
         <h4>Enter a GitHub username, to see the magic.</h4>
         <div className="search-wrapper">
           <label htmlFor="username">GitHub username</label>
-          <input id="username" value={username} placeholder="@username" type="text" onChange={handleUsernameChange} />
-          <i className={username.length > 0 ? "search-icon search-icon-active" : "search-icon search-icon-inactive"} >
-            <SearchIcon class="search-preloader"/>
+          <input
+            id="username"
+            value={username}
+            placeholder="@username"
+            type="text"
+            onChange={handleUsernameChange}
+            onKeyDown={handleKeyDown}
+          />
+          <i
+            onClick={() => onSearchBtnClicked(username)}
+            className={
+              username.length > 0
+                ? 'search-icon search-icon-active'
+                : 'search-icon search-icon-inactive'
+            }
+          >
+            <SearchIcon class="search-preloader" />
           </i>
         </div>
-        <GitHubUserInfo theme={theme}/>
+        <GitHubUserInfo theme={theme} />
       </div>
     </div>
   );
 };
-export default App;
+const mapDispatchToProps = dispatch => {
+  return {
+    onSearchBtnClicked: (username: string) => {
+      dispatch(getGitHubUserInfo(username));
+    },
+  };
+};
+const mapStateToProps = state => {
+  return {
+    state,
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(App);
