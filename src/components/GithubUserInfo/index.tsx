@@ -1,7 +1,6 @@
 import React, { FunctionComponent, useEffect } from 'react';
 import RepoItem from '../RepoItem/index';
 import Loader from './Loader';
-import src1 from '../../assets/o.png';
 import { connect } from 'react-redux';
 interface IGitHubUserInfoProps {
   theme: 'dark' | 'light';

@@ -3,7 +3,7 @@ import GitHubUserInfo from './components/GithubUserInfo/index';
 import { SearchIcon, Preloader } from './components/icons';
 import { connect } from 'react-redux';
 import { getGitHubUserInfo } from './store/actions';
-import './a.sass';
+import './app.sass';
 
 type Theme = 'dark' | 'light';
 interface IAppProps {
