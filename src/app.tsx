@@ -1,6 +1,6 @@
 import React, { useEffect, useState, FunctionComponent } from 'react';
 import GitHubUserInfo from './components/GithubUserInfo/index';
-import { SearchIcon } from './components/icons';
+import { SearchIcon, Preloader } from './components/icons';
 import { connect } from 'react-redux';
 import { getGitHubUserInfo } from './store/actions';
 import './a.sass';
@@ -76,17 +76,22 @@ const App: FunctionComponent<IAppProps> = ({ onSearchBtnClicked, state }) => {
             onChange={handleUsernameChange}
             onKeyDown={handleKeyDown}
           />
-          <i
+          <button
             onClick={() => onSearchBtnClicked(username)}
+            disabled={username.length === 0}
             className={
               username.length > 0
                 ? 'search-icon search-icon-active'
                 : 'search-icon search-icon-inactive'
             }
           >
-            <SearchIcon class="search-preloader" />
-          </i>
+            {state && !state.loading && <SearchIcon class="search-preloader" />}
+            {state && state.loading &&<Preloader class="preloader"/>}
+          </button>
         </div>
+        {state && state.error && (
+          <div className="helper-text">{state.error}</div>
+        )}
         <GitHubUserInfo theme={theme} />
       </div>
     </div>

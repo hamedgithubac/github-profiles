@@ -11,7 +11,6 @@ export const getGitHubUserInfo = (username: string) => {
         GitHubProfilesApi.getUserRepos(username).then((repos: any) => {
           if (repos) {
             const rp = Object.values(repos).slice(0,4);
-
             dispatch(getGitHubUserInfoSuccess(res, rp));
           } else {
             dispatch(getGitHubUserInfoSuccess(res, []));
@@ -63,7 +62,7 @@ const getGitHubUserInfoSuccess = (userInfo, repos) => ({
   },
 });
 const getGitHubUserInfoFail = error => ({
-  type: FETCH_USER_SUCCESS,
+  type: FETCH_USER_FAIL,
   payload: {
     error,
   },

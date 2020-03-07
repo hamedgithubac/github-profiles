@@ -74,35 +74,35 @@ export const SearchIcon = (props: any) => {
     </svg>
   );
 };
-// export const Preloader = (props: any) => {
-//   return (
-//     <svg
-//       xmlns="http://www.w3.org/2000/svg"
-//       style="margin: auto; background: rgb(255, 255, 255); display: block; shape-rendering: auto;"
-//       width="137px"
-//       height="137px"
-//       viewBox="0 0 100 100"
-//       preserveAspectRatio="xMidYMid"
-//     >
-//       <circle
-//         cx="50"
-//         cy="50"
-//         fill="none"
-//         stroke="#e15b64"
-//         stroke-width="10"
-//         r="42"
-//         stroke-dasharray="197.92033717615698 67.97344572538566"
-//         transform="rotate(43.8682 50 50)"
-//       >
-//         <animateTransform
-//           attributeName="transform"
-//           type="rotate"
-//           repeatCount="indefinite"
-//           dur="0.625s"
-//           values="0 50 50;360 50 50"
-//           keyTimes="0;1"
-//         ></animateTransform>
-//       </circle>
-//     </svg>
-//   );
-// };
+export const Preloader = (props: any) => {
+  return (
+    <svg
+      className={props.class}
+      xmlns="http://www.w3.org/2000/svg"
+      width="137px"
+      height="137px"
+      viewBox="0 0 100 100"
+      preserveAspectRatio="xMidYMid"
+    >
+      <circle
+        cx="50"
+        cy="50"
+        fill="none"
+        stroke="#e15b64"
+        stroke-width="10"
+        r="42"
+        stroke-dasharray="197.92033717615698 67.97344572538566"
+        transform="rotate(43.8682 50 50)"
+      >
+        <animateTransform
+          attributeName="transform"
+          type="rotate"
+          repeatCount="indefinite"
+          dur="0.625s"
+          values="0 50 50;360 50 50"
+          keyTimes="0;1"
+        ></animateTransform>
+      </circle>
+    </svg>
+  );
+};

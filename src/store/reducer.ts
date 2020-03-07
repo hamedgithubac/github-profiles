@@ -15,12 +15,14 @@ const githubUserInfo = (state: any = initialState, action) => {
       return {
         ...state,
         loading: true,
+        error: "",
       };
     case FETCH_USER_FAIL:
       return {
         ...state,
         loading: false,
         error: action.payload.error,
+        userInfo: []
       };
     case FETCH_USER_SUCCESS:
       return {

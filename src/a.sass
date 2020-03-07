@@ -16,7 +16,10 @@ html[data-theme='light']
         background-color: transparent
         g
             color: var(--color-muted)
-
+    .preloader
+        background-color: var(--bg-search)
+        circle
+            stroke: var(--bg-input)
 html[data-theme='dark']
     --bg: #333333;
     --bg-search: white;
@@ -27,7 +30,7 @@ html[data-theme='dark']
     .theme-toggle-icon
         background: url("./assets/sun.svg") no-repeat
         cursor: pointer
-    .search-icon-active
+    .search-icon-active,.preloader
         background-color: var(--bg-search)
         g
             fill: var(--bg-input)
@@ -35,6 +38,10 @@ html[data-theme='dark']
         background-color: transparent
         g
             color: var(--color-muted)
+    .preloader
+        background-color: var(--bg-search)
+        circle
+            stroke: var(--bg-input)
 body
     background-color: var(--bg)
     font-family: 'M PLUS Rounded 1c', sans-serif
@@ -71,12 +78,17 @@ body
         color: var(--color-muted) !important
     label
         color: var(--color-text)
+        font-size: 14px
+.helper-text
+    color: #FF006C
+    font-size: 14px
+    margin: 10px
 .search-icon
     width: 51px
     height: 51px
     position: absolute;
     left: 281px;
-    top: 43px;
+    top: 41px;
     border-radius: 8px;
     background-size: 18px
     background-repeat: no-repeat
@@ -86,6 +98,9 @@ body
     align-items: center
     transition: all 400ms ease
     cursor: pointer
+    border: none
+    &:focus
+        outline: 0
     svg
         width: 18px
         height: 18px
